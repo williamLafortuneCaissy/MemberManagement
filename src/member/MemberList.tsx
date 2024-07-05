@@ -16,6 +16,7 @@ const MemberList = () => {
                 lastName: doc.data().lastName,
                 phone: doc.data().phone,
                 email: doc.data().email,
+                dateOfBirth: doc.data().dateOfBirth,
                 created: doc.data().created,
             })))
         })
@@ -31,6 +32,7 @@ const MemberList = () => {
                     <div>{member.lastName}</div>
                     <div>{member.phone}</div>
                     <div>{member.email}</div>
+                    <div>{member.dateOfBirth}</div>
                 </div>
             ))}
         </section>

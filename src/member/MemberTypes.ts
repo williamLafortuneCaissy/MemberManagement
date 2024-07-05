@@ -1,11 +1,11 @@
 import { Timestamp } from "firebase/firestore"
 
 export type MemberType = {
-    id: string,
+    id: string | null,
     firstName: string,
     lastName: string,
     phone: string,
     email: string,
-    // dateOfBirth: Date,
+    dateOfBirth: string,
     created: Timestamp
 }

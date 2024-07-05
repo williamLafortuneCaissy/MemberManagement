@@ -1,22 +1,33 @@
 
 import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { useReducer } from 'react'
 import { db } from '../firebase'
+import { memberFormActions, memberFormInit, memberFormReducer } from './memberFormReducer'
 
 const MemberAdd = () => {
+    const [memberForm, memberFormDispatch] = useReducer(memberFormReducer, memberFormInit)
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
         try {
             await addDoc(collection(db, 'members'), {
-                firstName: 'firstName',
-                lastName: 'lastName',
-                phone: '1234567890',
-                email: 'a@a.com',
+                firstName: memberForm.firstName,
+                lastName: memberForm.lastName,
+                phone: memberForm.phone,
+                dateOfBirth: memberForm.dateOfBirth,
+                email: memberForm.email,
                 created: Timestamp.now()
             })
+
+            memberFormDispatch({ type: memberFormActions.clear })
         } catch (err) {
             alert(err)
         }
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        memberFormDispatch({ type: memberFormActions.updateInput, payload: { name, value } })
     }
 
     return (
@@ -30,6 +41,8 @@ const MemberAdd = () => {
                         id="firstName"
                         name="firstName"
                         className="form-input"
+                        value={memberForm.firstName}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="">
@@ -39,6 +52,8 @@ const MemberAdd = () => {
                         id="lastName"
                         name="lastName"
                         className="form-input"
+                        value={memberForm.lastName}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="">
@@ -48,6 +63,8 @@ const MemberAdd = () => {
                         id="phone"
                         name="phone"
                         className="form-input"
+                        value={memberForm.phone}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="">
@@ -57,6 +74,8 @@ const MemberAdd = () => {
                         id="email"
                         name="email"
                         className="form-input"
+                        value={memberForm.email}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="">
@@ -66,6 +85,8 @@ const MemberAdd = () => {
                         id="dateOfBirth"
                         name="dateOfBirth"
                         className="form-input"
+                        value={memberForm.dateOfBirth}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="col-span-full">
