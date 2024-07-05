@@ -1,11 +1,11 @@
 import './App.css'
-import AddMembers from './members/AddMembers'
+import MembersAdd from './members/MembersAdd'
 
 function App() {
 
   return (
     <div className='p-20'>
-      <AddMembers />
+      <MembersAdd />
     </div>
   )
 }
