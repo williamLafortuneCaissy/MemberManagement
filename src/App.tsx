@@ -1,5 +1,7 @@
 
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Dashboard from './dashboard/Dashboard';
+import MainNav from './layout/MainNav';
 import MemberAdd from './member/MemberAdd';
 import MemberList from './member/MemberList';
 
@@ -7,18 +9,30 @@ function App() {
 
   return (
     <BrowserRouter basename="/MemberManagement">
-      <div className="container mx-auto p-20">
-        <div className="flex gap-4">
-          <Link to="/">Members</Link>
-          <Link to="/create">Create</Link>
+      <div className="sticky top-0 z-10">
+        <div className={`h-16 flex items-center px-6 border-bottom bg-white`}>
+          <h1 className="text-xl font-medium"><Link to={"/"}>Member Management</Link></h1>
         </div>
-        <Routes>
-          <Route path="/" element={<MemberList />} />
-          <Route path="/create" element={<MemberAdd />} />
-          <Route path="/:id" element={<MemberAdd />} />
-          <Route path="/edit/:id" element={<MemberAdd />} />
-        </Routes>
       </div>
+      <div className='md:grid min-h-screen bg-gray-200 md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr]'>
+        <div className='row-span-full'>
+          <div className={`sticky top-16 flex min-h-[calc(100vh-64px)]`}>
+            <MainNav />
+          </div>
+        </div>
+        <div className='relative p-4'>
+          <div className="">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/member/" element={<MemberList />} />
+              <Route path="/member/create" element={<MemberAdd />} />
+              <Route path="/member/:id" element={<MemberAdd />} />
+              <Route path="/member/edit/:id" element={<MemberAdd />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+
     </BrowserRouter>
   )
 }

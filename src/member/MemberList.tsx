@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { db } from "../firebase";
@@ -37,7 +36,11 @@ const MemberList = () => {
     }
 
     return (
-        <section className="border-b py-10">
+        <section>
+            <div className="mb-4">
+                <Link className='text-blue-500' to="/member/create">Create</Link>
+            </div>
+
             <div className='text-2xl mb-5'>Memberslist</div>
             {members?.map(member => (
                 <div key={member.id} className="grid grid-cols-6 items-center gap-4 mb-4">

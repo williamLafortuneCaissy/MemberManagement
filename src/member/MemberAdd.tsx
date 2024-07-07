@@ -1,6 +1,7 @@
 
 import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { useReducer } from 'react'
+import { Link } from 'react-router-dom'
 import { db } from '../firebase'
 import { memberFormActions, memberFormInit, memberFormReducer } from './memberFormReducer'
 
@@ -31,7 +32,10 @@ const MemberAdd = () => {
     }
 
     return (
-        <section className="border-b py-10">
+        <section>
+            <div className="mb-4">
+                <Link to={'/member'} className=" text-blue-500">Back</Link>
+            </div>
             <div className='text-2xl mb-5'>MembersAdd</div>
             <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
                 <div className="">
