@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
 import { db } from "../firebase";
 import { MemberType } from './MemberTypes';
 
@@ -46,7 +47,7 @@ const MemberList = () => {
                     <div>{member.email}</div>
                     <div>{member.dateOfBirth}</div>
                     <div className='flex gap-1'>
-                        {/* <button className="p-2 bg-slate-400 hover:bg-slate-300" onClick={() => handleSelect(member.id)}>e</button> */}
+                        <Link to={`/${member.id}`} className="p-2 bg-slate-400 hover:bg-slate-300">View</Link>
                         <button className="p-2 bg-slate-400 hover:bg-slate-300" onClick={() => handleDelete(member.id)}>x</button>
                     </div>
                 </div>
