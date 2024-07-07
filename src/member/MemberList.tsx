@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from "../firebase";
 import { MemberType } from './MemberTypes';
 
@@ -23,16 +23,32 @@ const MemberList = () => {
     }, [])
 
 
+    const handleDelete = async (id: string | null) => {
+        console.log('handleDelete', id);
+        if (!id) throw new Error(`Invalid id: ${id}`)
+
+        const taskDocRef = doc(db, 'members', id)
+        try {
+            await deleteDoc(taskDocRef)
+        } catch (err) {
+            alert(err)
+        }
+    }
+
     return (
         <section className="border-b py-10">
             <div className='text-2xl mb-5'>Memberslist</div>
-            {members?.map( member => (
-                <div key={member.id} className="grid grid-cols-5 gap-4">
+            {members?.map(member => (
+                <div key={member.id} className="grid grid-cols-6 items-center gap-4 mb-4">
                     <div>{member.firstName}</div>
                     <div>{member.lastName}</div>
                     <div>{member.phone}</div>
                     <div>{member.email}</div>
                     <div>{member.dateOfBirth}</div>
+                    <div className='flex gap-1'>
+                        {/* <button className="p-2 bg-slate-400 hover:bg-slate-300" onClick={() => handleSelect(member.id)}>e</button> */}
+                        <button className="p-2 bg-slate-400 hover:bg-slate-300" onClick={() => handleDelete(member.id)}>x</button>
+                    </div>
                 </div>
             ))}
         </section>
