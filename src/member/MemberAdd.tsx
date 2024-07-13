@@ -1,12 +1,13 @@
 
 import { addDoc, collection, Timestamp } from 'firebase/firestore'
 import { useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { db } from '../firebase'
 import { memberFormActions, memberFormInit, memberFormReducer } from './memberFormReducer'
 
 const MemberAdd = () => {
     const [memberForm, memberFormDispatch] = useReducer(memberFormReducer, memberFormInit)
+    const navigate = useNavigate()
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault()
@@ -20,7 +21,8 @@ const MemberAdd = () => {
                 created: Timestamp.now()
             })
 
-            memberFormDispatch({ type: memberFormActions.clear })
+            navigate('/member')
+
         } catch (err) {
             alert(err)
         }
