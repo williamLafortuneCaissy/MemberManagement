@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      borderColor: {
+        DEFAULT: 'rgb(203 213 225)', // This is the value for border-slate-300
+      },
+    },
   },
   plugins: [],
 }

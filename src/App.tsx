@@ -10,11 +10,11 @@ function App() {
   return (
     <BrowserRouter basename="/MemberManagement">
       <div className="sticky top-0 z-10">
-        <div className={`h-16 flex items-center px-6 border-bottom bg-white`}>
+        <div className={`h-16 flex items-center px-6 border-b  bg-white`}>
           <h1 className="text-xl font-medium"><Link to={"/"}>Member Management</Link></h1>
         </div>
       </div>
-      <div className='md:grid min-h-screen bg-gray-200 md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr]'>
+      <div className='md:grid min-h-screen bg-slate-100 md:grid-cols-[auto_1fr] md:grid-rows-[auto_1fr]'>
         <div className='row-span-full'>
           <div className={`sticky top-16 flex min-h-[calc(100vh-64px)]`}>
             <MainNav />

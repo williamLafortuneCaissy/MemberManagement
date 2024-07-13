@@ -36,7 +36,7 @@ const MemberAdd = () => {
     return (
         <section>
             <div className="mb-4">
-                <Link to={'/member'} className=" text-blue-500">Back</Link>
+                <Link to={'/member'} className=" text-sky-500">Back</Link>
             </div>
             <div className='text-2xl mb-5'>MembersAdd</div>
             <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
@@ -98,7 +98,7 @@ const MemberAdd = () => {
                 <div className="col-span-full">
                     <button
                         type="submit"
-                        className="btn"
+                        className="btn btn-sky"
                     >
                         Submit
                     </button>

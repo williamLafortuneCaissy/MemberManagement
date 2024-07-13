@@ -3,11 +3,11 @@ import NavItem from "./NavItem";
 
 const MainNav = () => {
     return (
-        <section className='md:border-r w-80 bg-white'>
-            <nav className='flex flex-col gap-2 p-2 text-xl border-t'>
+        <section className='md:border-r  w-80 bg-white'>
+            <nav className='flex flex-col gap-2 p-2 text-xl'>
                 <NavItem
                     exact
-                    activeClassName='!bg-blue-100 !text-blue-600'
+                    activeClassName='!bg-sky-100 !text-sky-700'
                     className='hover:bg-gray-100 flex items-center gap-4 px-4 py-3 rounded-lg'
                     href='/'
                 >
@@ -18,7 +18,7 @@ const MainNav = () => {
                     Dashboard
                 </NavItem> 
                 <NavItem
-                    activeClassName='!bg-blue-100 !text-blue-600'
+                    activeClassName='!bg-sky-100 !text-sky-700'
                     className='hover:bg-gray-100 flex items-center gap-4 px-4 py-3 rounded-lg'
                     href='/member'
                 >
